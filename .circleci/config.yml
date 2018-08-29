@@ -7,5 +7,5 @@ jobs:
   steps:
    - checkout
    - run: 
-       name Which Bundler 
+       name: Which Bundler 
        command: bundle -v
