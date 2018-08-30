@@ -34,6 +34,12 @@ workflows:
        filters:
          branches:
            only: qa
+    - deploy-to-preprod:
+        requires:
+          - deploy-to-stg
+        filters:
+           branches:
+             only: qa
     - deploy-to-prod:
        requires:
          - build
