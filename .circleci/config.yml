@@ -10,7 +10,7 @@ jobs:
           command: echo Hello, world.
   deploy-to-stg:
     docker: 
-      - images: debian:stretch
+      - image: debian:stretch
     steps:
       - run: 
          name: Deploying to staging
