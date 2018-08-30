@@ -8,11 +8,18 @@ jobs:
       - run:
           name: Greeting
           command: echo Hello, world.
+  deploy-to-stg:
+    docker: 
+      - images: debian:stretch
+    steps:
+      - run: 
+         name: Deploying to staging
+         command: ls -l
   deploy:
     docker:
      - image: debian:stretch
     steps:
-     - checkout
+     #- checkout
      - run:
          name: Deployment Started
          command: ls -l
@@ -21,6 +28,9 @@ workflows:
  build-deploy:
    jobs:
     - build
+    - deploy-to-stg:
+       requires:
+        - build
     - deploy:
        requires:
          - build
