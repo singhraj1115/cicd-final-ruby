@@ -13,15 +13,15 @@ jobs:
       - image: debian:stretch
     steps:
       - run: 
-         name: Deploying to staging
+         name: Deploying to staging Started
          command: ls -l
-  deploy:
+  deploy-to-prod:
     docker:
      - image: debian:stretch
     steps:
      #- checkout
      - run:
-         name: Deployment Started
+         name: Deployment to Prod Started
          command: ls -l
 workflows:
  version: 2
@@ -31,7 +31,10 @@ workflows:
     - deploy-to-stg:
        requires:
         - build
-    - deploy:
+       filters:
+         branches:
+           only: qa
+    - deploy-to-prod:
        requires:
          - build
        filters:
