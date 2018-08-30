@@ -15,6 +15,13 @@ jobs:
       - run: 
          name: Deploying to staging Started
          command: ls -l
+  deploy-to-preprod:
+    docker: 
+      - image: debian:stretch
+    steps:
+      - run: 
+         name: Deploying to Pre prod Started
+         command: ls -l
   deploy-to-prod:
     docker:
      - image: debian:stretch
